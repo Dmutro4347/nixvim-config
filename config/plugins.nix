@@ -1,7 +1,6 @@
 {
   plugins = {
     lualine.enable = true;      # Status line
-    nvim-tree.enable = true;    # File tree
     treesitter.enable = true;   # Syntax highlighting & code parsing
     web-devicons.enable = true; # Icons for treesitter
     bufferline.enable = true;   # Bufferline for neovim 

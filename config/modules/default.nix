@@ -5,5 +5,7 @@
     ./lsp.nix
     ./ui.nix
     ./autopairs.nix
+    ./neotree.nix
+    ./bufferline.nix
   ];
 }

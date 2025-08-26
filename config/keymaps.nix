@@ -19,7 +19,7 @@
     {
       mode = "n";
       key = "<C-b>";
-      action = ":NvimTreeToggle<CR>";
+      action = "<cmd>Neotree toggle<CR>";
       options = { noremap = true; };
     }
 
