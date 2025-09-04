@@ -7,5 +7,7 @@
     ./autopairs.nix
     ./neotree.nix
     ./bufferline.nix
+    ./conform.nix
+    ./lang
   ];
 }

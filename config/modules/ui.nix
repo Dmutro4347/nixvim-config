@@ -4,7 +4,13 @@
 
     plugins = {
       treesitter = {
+      	enable = true;
+	      folding = true;
         settings = {
+	        highlight = {
+          additional_vim_regex_highlighting = true;
+          enable = true;
+	  };
           ensure_installed = [
             "python"
             "lua"
