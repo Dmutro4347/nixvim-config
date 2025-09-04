@@ -26,7 +26,7 @@
     };
   };
 
-  keymaps = [
+    keymaps = [
     {
       mode = [
         "n"
