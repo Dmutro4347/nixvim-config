@@ -11,10 +11,16 @@
     };
 
     lint = {
-      lintersByFt.python = [ "mypy" ];
-      linters.mypy = {
-        cmd = lib.getExe pkgs.mypy;
-        args = [ "--ignore-missing-imports" ];
+      lintersByFt.python = [ "ruff" ];
+      linters.ruff = {
+        cmd = lib.getExe pkgs.ruff;
+        args = [
+          "--select=E,F,UP,N,I,ASYNC,S,PTH"
+          "--ignore=E112"
+          "--line-length=79"
+          "--respect-gitignore"
+          "--target-version=py311"
+        ];
       };
     };
 
@@ -33,12 +39,23 @@
 
       ruff = {
         enable = true;
-        onAttach.function = ''
-          if client.name == 'ruff' then
-            -- Disable hover in favor of Pyright
-            client.server_capabilities.hoverProvider = false
-          end
-        '';
+        extraOptions.init_options = {
+          settings = {
+            args = [
+              "--select=E,F,UP,N,I,ASYNC,S,PTH"
+              "--ignore=E112"
+              "--line-length=79"
+              "--respect-gitignore"
+              "--target-version=py311"
+            ];
+          };
+          onAttach.function = ''
+            if client.name == 'ruff' then
+              -- Disable hover in favor of Pyright
+              client.server_capabilities.hoverProvider = false
+            end
+          '';
+        };
       };
     };
   };
