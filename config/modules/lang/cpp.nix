@@ -43,9 +43,6 @@
         ];
         onAttach.function = ''
           vim.keymap.set('n', 'gh', "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header (C/C++)", buffer = bufnr })
-
-          require("clangd_extensions.inlay_hints").setup_autocmd()
-          require("clangd_extensions.inlay_hints").set_inlay_hints()
         '';
         extraOptions = {
           init_options = {
@@ -85,24 +82,6 @@
           };
         };
       };
-    };
-
-    dap = {
-      adapters.executables.lldb.command = "${pkgs.lldb}/bin/lldb-vscode";
-
-      configurations.cpp = [
-        {
-          name = "C++";
-          type = "lldb";
-          request = "launch";
-          cwd = "\${workspaceFolder}";
-          program.__raw = ''
-            function()
-              return vim.fn.input('Executable path: ', vim.fn.getcwd() .. '/', 'file')
-            end
-          '';
-        }
-      ];
     };
   };
 }
